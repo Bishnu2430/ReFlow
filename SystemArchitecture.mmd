@@ -1,0 +1,37 @@
+flowchart TB
+
+%% HARDWARE LAYER
+subgraph HL[Hardware Layer]
+    A([🧪 Sensors<br/>Temp • Gas • Humidity • PIR • Load]):::sensor
+    B([🧠 Arduino UNO<br/>Processes Data & Creates JSON]):::arduino
+    C([📶 ESP32<br/>WiFi + Timestamp + Firebase Upload]):::esp
+    A --> B
+    B --> C
+end
+
+%% CLOUD LAYER
+subgraph CL[Cloud Layer]
+    D([🔥 Firebase RTDB<br/>Data Storage + Alert Logs]):::firebase
+end
+
+%% APPLICATION LAYER
+subgraph AL[Application Layer]
+    E([📊 Next.js Dashboard<br/>Graphs • History • Status]):::dashboard
+    G([⚠ Alert Engine<br/>Email / Popup Notifications]):::alert
+    F([👥 Users / Staff / Admin]):::user
+end
+
+%% CONNECTIONS BETWEEN BLOCKS WITH CLEAR ROUTES
+C -->|HTTPS JSON| D
+D --> E
+D --> G
+E --> F
+
+%% STYLES
+classDef sensor fill:#00cec9,stroke:#007a78,color:#fff
+classDef arduino fill:#0984e3,stroke:#064d80,color:#fff
+classDef esp fill:#6c5ce7,stroke:#3d2db3,color:#fff
+classDef firebase fill:#ffa502,stroke:#cc8400,color:#fff
+classDef dashboard fill:#74b9ff,stroke:#2e86de,color:#fff
+classDef user fill:#55efc4,stroke:#2dba8c,color:#000
+classDef alert fill:#d63031,stroke:#801515,color:#fff

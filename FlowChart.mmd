@@ -1,0 +1,22 @@
+flowchart TD
+    A([🚀 Start]):::start --> B([📡 Read Sensors]):::arduino
+    B --> C([📦 Create JSON Data]):::arduino
+    C --> D([🔗 Send to ESP32<br/>via UART]):::link
+    D --> E([🌐 ESP32 Connects WiFi]):::esp
+    E --> F([☁ Upload to Firebase<br/>with Timestamp]):::firebase
+    F --> G{✅ Hygiene Safe?}:::decision
+    G -->|Yes| H([📁 Store Normal Data]):::safe
+    G -->|No| I([⚠ Create Alert Entry]):::alert
+    H --> J([📊 Dashboard Update]):::dashboard
+    I --> J
+    J --> B
+
+    classDef start fill:#00b894,stroke:#006644,color:#fff
+    classDef arduino fill:#0984e3,stroke:#064d80,color:#fff
+    classDef link fill:#b2bec3,stroke:#636e72,color:#000
+    classDef esp fill:#6c5ce7,stroke:#3d2db3,color:#fff
+    classDef firebase fill:#ffa502,stroke:#cc8400,color:#fff
+    classDef decision fill:#ff7675,stroke:#b33939,color:#fff
+    classDef safe fill:#55efc4,stroke:#2dba8c,color:#000
+    classDef alert fill:#d63031,stroke:#801515,color:#fff
+    classDef dashboard fill:#74b9ff,stroke:#2e86de,color:#fff
