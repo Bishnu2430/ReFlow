@@ -195,25 +195,20 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Page Header */}
+        <div className="mb-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-r from-pink-500 to-purple-600 p-2 rounded-xl">
-                <Droplets className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">
-                  Menstrual Health Monitoring
-                </h1>
-                <p className="text-sm text-gray-500">
-                  IoT Washroom Hygiene System
-                </p>
-              </div>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">
+                Real-Time Dashboard
+              </h1>
+              <p className="text-gray-600 mt-1">
+                Live monitoring of all IoT sensors and system status
+              </p>
             </div>
             <div className="flex items-center gap-4">
-              <div className="text-right">
+              <div className="text-right bg-white px-4 py-2 rounded-lg shadow-sm">
                 <p className="text-xs text-gray-500">Last Update</p>
                 <p className="text-sm font-medium text-gray-700">
                   {lastUpdate?.toLocaleTimeString() || "Never"}
@@ -231,9 +226,6 @@ export const Dashboard: React.FC = () => {
             </div>
           </div>
         </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Overall Status Banner */}
         <div
           className={`rounded-2xl p-6 mb-6 text-white card-shadow-lg ${
@@ -452,16 +444,6 @@ export const Dashboard: React.FC = () => {
           </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">
-          <p>Menstrual Health IoT Monitoring System © 2025</p>
-          <p className="mt-1">
-            Real-time washroom hygiene monitoring powered by IoT sensors
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

@@ -1,12 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Menstrual Health Monitoring System",
-  description: "IoT-based washroom hygiene monitoring and management system",
+  title: "Menstrual Health Monitoring System | IIT Bhubaneswar",
+  description:
+    "IoT-based washroom hygiene monitoring and management system for menstrual health",
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
@@ -32,7 +34,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
