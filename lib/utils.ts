@@ -125,7 +125,6 @@ export function showNotification(title: string, body: string, icon?: string) {
       body,
       icon: icon || "/icon-192x192.png",
       badge: "/icon-192x192.png",
-      vibrate: [200, 100, 200],
       tag: "hygiene-alert",
       requireInteraction: true,
     });

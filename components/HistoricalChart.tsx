@@ -55,7 +55,7 @@ export const HistoricalChart: React.FC<HistoricalChartProps> = ({
     .reverse()
     .map((item, index) => ({
       name: `T${index + 1}`,
-      value: item[config.dataKey],
+      value: item[config.dataKey as keyof SensorData] as number,
       timestamp: item.timestamp,
     }));
 
