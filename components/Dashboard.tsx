@@ -96,6 +96,24 @@ export const Dashboard: React.FC = () => {
     return () => unsubscribe();
   }, []);
 
+  // Send Discord notification
+  const sendDiscordNotification = async (
+    type: string,
+    severity: string,
+    message: string,
+    sensorData: SensorData
+  ) => {
+    try {
+      await fetch("/api/discord", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type, severity, message, sensorData }),
+      });
+    } catch (error) {
+      console.error("Failed to send Discord notification:", error);
+    }
+  };
+
   // Alert checking and notification system
   const checkAndTriggerAlerts = (data: SensorData) => {
     const newAlerts: Alert[] = [];
@@ -114,6 +132,9 @@ export const Dashboard: React.FC = () => {
 
       // Browser notification
       showNotification("Hygiene Alert!", alertMessage);
+
+      // Discord notification
+      sendDiscordNotification("Hygiene", "high", alertMessage, data);
     }
 
     // Temperature alert
